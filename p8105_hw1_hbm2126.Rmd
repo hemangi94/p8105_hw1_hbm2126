@@ -1,6 +1,6 @@
 ---
 title: "p8105_hw1_hbm2126"
-output: html_document
+output: github_document
 date: "2022-09-22"
 ---
 
