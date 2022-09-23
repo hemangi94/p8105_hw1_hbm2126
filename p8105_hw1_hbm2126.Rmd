@@ -24,11 +24,11 @@ The dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns. The mean
 
 ## Scatterplot
 
-```{r}
+```{r creating a scatterplot}
 ggplot(penguins, aes(x= bill_length_mm, y = flipper_length_mm, col = species)) + geom_point()
 ```
 
-```{r}
+```{r saving the scatterplot}
 ggsave("Scatterplot.png")
 ```
 
