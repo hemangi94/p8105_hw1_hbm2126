@@ -18,11 +18,11 @@ library(tidyverse)
 
 # Problem 1
 
-## Describing the "penguins" dataset
+### Describing the "penguins" dataset
 
 The dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns. The mean flipper length is `r round(mean(penguins$flipper_length_mm, na.rm = TRUE), 2)` millimeters
 
-## Scatterplot
+### Scatterplot
 
 ```{r creating a scatterplot}
 ggplot(penguins, aes(x= bill_length_mm, y = flipper_length_mm, col = species)) + geom_point()
@@ -30,6 +30,31 @@ ggplot(penguins, aes(x= bill_length_mm, y = flipper_length_mm, col = species)) +
 
 ```{r saving the scatterplot}
 ggsave("Scatterplot.png")
+```
+
+# Problem 2
+
+```{r creating a data frame}
+hw1_df = tibble(
+    random_samp = rnorm (10),
+    vec_logical = random_samp > 0,
+    vec_char = c("This", "is", "a", "character", "vector","that","is","ten","characters","long"),
+    vec_factor = factor(c("Single","Married","Divorced","Divorced","Single","Married","Single","Divorced","Married","Single"))
+  )
+```
+
+```{r means of variables}
+mean(pull(hw1_df,random_samp))
+mean(pull(hw1_df,vec_logical))
+mean(pull(hw1_df,vec_char))
+mean(pull(hw1_df,vec_factor))
+
+```
+
+```{r converting variables to numeric values}
+as.numeric(pull(hw1_df,vec_logical))
+as.numeric(pull(hw1_df,vec_char))
+as.numeric(pull(hw1_df,vec_factor))
 ```
 
 ## R Markdown
