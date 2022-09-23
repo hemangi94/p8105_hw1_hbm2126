@@ -1,8 +1,12 @@
 ---
-title: "p8105_hw1_hbm2126"
+title: "Data Science Homework 1"
 output: github_document
-date: "2022-09-22"
+
 ---
+Hemangi Modi (UNI: hbm2126)
+
+
+2022-09-22
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -12,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 data("penguins", package = "palmerpenguins")
 ```
 
-```{r loading libraries}
+```{r loading libraries, include=FALSE}
 library(tidyverse)
 ```
 
@@ -20,7 +24,13 @@ library(tidyverse)
 
 ### Describing the "penguins" dataset
 
-The dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns. The mean flipper length is `r round(mean(penguins$flipper_length_mm, na.rm = TRUE), 2)` millimeters
+Below are some of the characteristics of the "penguins" dataset:
+
+* The dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns
+
+* There are 8 variables in this dataset: the species of the penguin, the island the species is from, the length of the bill in millimeters, the depth of the bill in millimeters, the length of the flipper in millimeters, the body mass of the penguin in grams, the sex of the penguin, and the year
+
+* The mean flipper length is `r round(mean(penguins$flipper_length_mm, na.rm = TRUE), 2)` millimeters
 
 ### Scatterplot
 
@@ -29,7 +39,7 @@ ggplot(penguins, aes(x= bill_length_mm, y = flipper_length_mm, col = species)) +
 ```
 
 ```{r saving the scatterplot}
-ggsave("Scatterplot.png")
+ggsave("penguins_Scatterplot.png")
 ```
 
 # Problem 2
@@ -39,7 +49,7 @@ hw1_df = tibble(
     random_samp = rnorm (10),
     vec_logical = random_samp > 0,
     vec_char = c("This", "is", "a", "character", "vector","that","is","ten","characters","long"),
-    vec_factor = factor(c("Single","Married","Divorced","Divorced","Single","Married","Single","Divorced","Married","Single"))
+    vec_factor = factor(c("Near","Far","Middle","Middle","Near","Far","Near","Middle","Far","Near"))
   )
 ```
 
@@ -51,28 +61,9 @@ mean(pull(hw1_df,vec_factor))
 
 ```
 
-```{r converting variables to numeric values}
+```{r converting variables to numeric values, eval=FALSE}
 as.numeric(pull(hw1_df,vec_logical))
 as.numeric(pull(hw1_df,vec_char))
 as.numeric(pull(hw1_df,vec_factor))
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
