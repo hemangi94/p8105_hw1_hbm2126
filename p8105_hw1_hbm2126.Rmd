@@ -12,7 +12,7 @@ Hemangi Modi (UNI: hbm2126)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r loading dataset}
+```{r loading dataset, include=FALSE}
 data("penguins", package = "palmerpenguins")
 ```
 
@@ -61,9 +61,12 @@ mean(pull(hw1_df,vec_factor))
 
 ```
 
+It is only possible to take the mean of the variables in the random sample from a standard Normal distribution and the logical vector. Taking the mean of the character and factor vectors returns 'NA'
+
 ```{r converting variables to numeric values, eval=FALSE}
 as.numeric(pull(hw1_df,vec_logical))
 as.numeric(pull(hw1_df,vec_char))
 as.numeric(pull(hw1_df,vec_factor))
 ```
 
+Using the as.numeric function on the logical vector returns zeroes and ones. For the character vector, the as.numeric function returns a set of 'NAs.' This explains why taking the mean of the character vector returns 'NA.' On the factor vector, the as.numeric assigns '3,' '2', or '1' to the different 'levels' within the factor vector. As a result, after using as.numeric on the factor vector, it is possible to take the mean but may not be meaningful as data stored in factor vectors generally tend to be categorical and there is no relative position/rank. 
